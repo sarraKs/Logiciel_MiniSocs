@@ -1,0 +1,91 @@
+@startuml
+
+'Diagramme de séquence (PlantUML)'
+
+'Configuration charte graphique'
+hide footbox
+skinparam sequenceParticipantBackgroundColor White
+skinparam sequenceActorBackgroundColor White
+
+'Déclaration des acteurs et des participants (déjà existants avant la séquence)'
+actor "__:Utilisateur__" as user
+participant "__m:minisoc__" as m
+participant "__r:Réseau__" as r
+participant "__u:Utilisateur__" as u
+participant "__v:Utilisateur__" as v
+participant "__member:Member__" as member
+
+
+
+'Séquence avec les messages, les créations de participants, etc.'
+user -> m ++ : AjouterMembreAuReseau(pseudonyme, monPseudoMembre, pseudonymeAjout, PseudoMembreAJout, etatMembreAjout, nomReseau)
+opt monPseudoMembre (non null ∧ non vide) ∧ pseudonyme (non null ∧ non vide)∧ PseudoMmebre (non null ∧ non vide)∧ etatMembreAjout (non null ∧ non vide) ^ nomReseau (non null ^ non vide)
+      m -> m++ : u= chercher(pseudonyme) : Utilisateur
+      create "__u: Utilisateur__" as u
+      opt u!= null
+    	m -> u++ : ChercherEtatCompte(pseudonyme)
+	u --> m++
+	opt EtatCompte == ACTIF
+	    	 m -> m ++ : r= ChercherReseau(nomReseau)
+		 create "__r: Reseau__" as r
+		 opt r!= null
+		     m-> r : ChercherEtatReseau(nomReseau)
+		     r--> m ++
+		 opt EtatReseau == OUVERT 
+		      m -> m++ : m=chercher(monPseudoMembre)
+		       create "__member: Member__" as member
+		        opt member != null
+		     	 m-> u : ChercherEtatMembre(monpseudoMembre)
+			 u-> member : ChercherEtatMembre(monpseudoMembre)
+			 member --> u++
+			 u --> m ++
+		         opt etatMembre == Modérateur
+			     m -> m++ : v= chercher(pseudonymeAjout) : Utilisateur
+			     opt v != null
+			     	 m -> m ++ : m1= ChercherMembre(pseudoMembreAjout)
+				 opt m1 == null
+				  create "__m1: Member__" as m1
+				 m -> m1 : "create(pseudoMembreAjout, etatMembreAjout)"
+				 m1 --> m ++
+				 create "__v: Utilisateur__" as v
+				 m -> v ++ : AjouterMembre(pseudoMembreAjout, m1)
+				 v --> m ++
+				 
+				 m-> r ++ : AjouterMembre(pseudoMembreAjout, m1)
+				 r --> m ++
+				 create "__consommateur2:MonConsommateur__" as consommateur2
+    	       	  		  m -> "__consommateur2:MonConsommateur__" as consommateur2 ++ : "create()"
+	    			     return
+		 		       m -> v : RendreConsommateur(consommateur2)
+		  		        v --> m ++
+					alt etatMembreAjout == MODERATEUR 
+	           			 m -> r : SuouscrireDansProducteurMsgEnAttente(consomateur2)
+		  			  r --> m ++
+		  			   m -> r : SouscrireDansProducteurMsgPoste(consommateur2)
+		  			    r --> m ++
+					 else etatMembreAjout == MEMBRE
+					  m -> r : SouscrireDansProducteurMsgPoste(consommateur2)
+					  r --> m ++ 
+
+ 					 
+					 
+
+		    		    	  end
+	
+				  end
+            	       	   end
+         		 end
+                     end 
+              end
+
+	    end 
+ 	  end 	        
+end
+end
+	     
+	    
+	
+    
+ 
+
+@enduml

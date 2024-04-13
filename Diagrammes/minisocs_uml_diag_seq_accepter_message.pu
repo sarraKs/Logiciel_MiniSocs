@@ -1,0 +1,69 @@
+@startuml
+
+'Diagramme de séquence (PlantUML)'
+
+'Configuration charte graphique'
+hide footbox
+skinparam sequenceParticipantBackgroundColor White
+skinparam sequenceActorBackgroundColor White
+
+'Déclaration des acteurs et des participants (déjà existants avant la séquence)'
+actor "__:Utilisateur__" as user
+participant "__m:minisoc__" as m
+participant "__r:Réseau__" as r
+participant "__u:Utilisateur__" as u
+participant "__member:Member__" as member
+participant "__mess : Message __" as mess
+
+
+
+'Séquence avec les messages, les créations de participants, etc.'
+user -> m ++ : AccepterMessage( pseudo_membre, pseudonyme, idMessage, nom_Réseau)
+  opt pseudo_membre (non null ∧ non vide) ∧ pseudonyme (non null ∧ non vide)∧ idMessage (non null ∧ non vide)∧ nom_Réseau (non null ∧ non vide)
+      m -> m++ : u= chercher(pseudonyme) : Utilisateur
+      create "__u: Utilisateur__" as u
+      opt u!= null
+    	m -> u++ : ChercherEtatCompte(pseudonyme)
+	u --> m++
+	opt EtatCompte == ACTIF
+	     m -> m++ : m=chercher(pseudo-membre)
+	     create "__member: Member__" as member
+	      opt member != null
+	      	  	 m-> u : ChercherEtatMembre (pseudo_membre)
+		     	 u ->member: ChercherEtatMembre(pseudo_membre)
+			 member --> u
+			 u --> m 
+		          opt etatMembre == modérateur
+    	       	               m-> u ++ : mess=chercherMessage(idMessage)
+			        u -> member ++ : mess=chercherMessage(idMessage)
+	    	        	 member --> u
+				  u --> m
+				   opt mess != null
+			  	        m -> m ++ : r= chercherRéseau(nomRéseau)
+			 		 create "__r: Reseau__" as r
+					 opt r != null 
+			 		  m -> r ++ : ChercherEtatReseau(nomReseau)
+					  r --> m 
+			  		  opt EtatReseau == OUVERT
+					    create "__mess: Message__" as mess
+					    m -> mess ++ : accepterMessage()
+					    
+			 		     create "__notif1: Notification__" as notif1 
+			 		      m -> notif1 ++ : CreerNotif("contenu de la notification")
+			 		       notif1 --> m 
+			 		        m -> r ++ : SubmitNotifDansProducteurMsgPoste(notif1)
+						r --> m ++
+				          end 
+			 		    end
+ 			           end 
+			 end       
+ 	       end
+       	end 
+      end
+      
+end 
+			  
+	              
+
+
+@enduml

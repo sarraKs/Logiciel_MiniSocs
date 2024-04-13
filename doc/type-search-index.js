@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"eu.telecomsudparis.csc4102.minisocs","l":"MiniSocs"}];updateSearchResults();

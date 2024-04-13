@@ -1,0 +1,73 @@
+@startuml
+
+'Diagramme de séquence (PlantUML)'
+
+'Configuration charte graphique'
+hide footbox
+skinparam sequenceParticipantBackgroundColor White
+skinparam sequenceActorBackgroundColor White
+
+'Déclaration des acteurs et des participants (déjà existants avant la séquence)'
+actor "__:Utilisateur__" as user
+participant "__m:minisoc__" as m
+participant "__r:Réseau__" as r
+participant "__u:Utilisateur__" as u
+participant "__member:Member__" as member
+
+
+
+'Séquence avec les messages, les créations de participants, etc.'
+user -> m ++ : PosterMessage(contenu, pseudo_membre, pseudonyme, nom_Réseau)
+  opt pseudo_membre (non null ∧ non vide) ∧ pseudonyme (non null ∧ non vide)∧ contenu (non null ∧ non vide)∧ nom_Réseau (non null ∧ non vide)
+      m -> m++ : u= chercher(pseudonyme) : Utilisateur
+      create "__u: Utilisateur__" as u
+      opt u!= null
+    	m -> u++ : ChercherEtatCompte(pseudonyme)
+	u --> m++
+	opt EtatCompte == ACTIF
+	     m -> m++ : r= chercher(nom_réseau) : Réseau
+	     Create "__r:Réseau__" as r
+	     
+	     opt r!=null
+	     	 m -> r ++ :ChercherEtatRéseau(nom_réseau)
+		 r --> m++
+		 opt EtatRéseau == OUVERT
+		     m -> r : PosterMessage(contenu, pseudo_membre)
+		     r -> r++ : m=chercher(pseudo-membre)
+		      create "__member: Member__" as member
+		     opt member != null
+		     	 r ->member: ChercherEtatMembre(pseudo_membre)
+			 member --> r++
+		       alt etatMembre == membre
+	    	     	create "__m1:Message__" as m1
+    	       	        r -> "__m1:Message__" as m1 ++ : m1=create(contenu, etatMessage== en Attente): Message
+			Create "__notif1:Notification__" as notif1
+			r -> notif1 : "creerNotif ("contenu de la notif1")
+			notif1 --> r 
+			r -> r ++ : submitNotifDansProducteurMsgEnAttente(notif1)
+	               else etatMembre == modérateur
+	                Create "__m2:Message__" as m2
+	                r -> "__m2:Message__" as m2 ++ : m2=create(contenu, etatMessage== Accepté): Message			 
+		        Create "__notif2:Notification__" as notif2
+			r -> notif2 : "creerNotif ("contenu de la notif2")"
+			notif2 --> r 
+			r -> r ++ : submitNotifDansProducteurMsgPoste(notif2)
+		       end
+		     end
+	
+                  end
+             end
+         end
+      end 
+ end 
+ r --> m
+m-->user	        
+		     
+		     
+	     
+	    
+	
+    
+ 
+
+@enduml

@@ -1,0 +1,136 @@
+@startuml
+
+'Diagramme de classes (PlantUML)'
+
+'Configuration charte graphique'
+hide empty methods
+hide circle
+skinparam class {
+  BackgroundColor White
+  ArrowColor Black
+  BorderColor Black
+}
+
+'Classes, énumérations, etc.'
+class MiniSocs {
+  - nom: String
+}
+class Utilisateur {
+  - pseudonyme: String
+  - nom: String
+  - prénom: String
+  - courriel: String
+  - etatCompte: ÉtatCompte
+}
+class Membre {
+  - pseudo_membre: String
+  - etatMembre : ÉtatMembre
+}
+class Réseau {
+  - nom_Réseau:string
+  - etat_réseau:ÉtatRéseau
+  - producteurMessageEnAttente : SubmissionPublisher
+  - producteurMessagePoste : SubmissionPublisher
+    
+}
+class Message {
+  -idMessage : string
+  -DatePubication : LocalDateTime
+  - contenu: String
+  - etat_message:ÉtatMessage
+}
+
+
+interface Publisher {
+    + subscribe(subscriber : Subscriber)
+    + submit(p : P)
+}
+
+interface Subscriber {
+    + onSubscribe(subscription : Subscription)
+    + onNext(p : P)
+    + onError(t : Throwable)
+    + onComplete()
+}
+
+interface Subscription {
+    + request(n : long)
+    + cancel()
+}
+
+class SubmissionPublisher {
+    + submit(p : P)
+}
+
+class BufferedSubscription {
+    + doOffer(p : P)
+}
+
+
+
+
+
+
+
+class Notification {
+  -contenu :String
+}
+
+class MonConsommateur {
+  - id : string 
+  - souscription : Subscription
+  - strategie : EtatStrategie
+  - lastMessageTime : Instant 
+}
+
+
+  
+
+enum ÉtatCompte <<enum>> {
+  ACTIF
+  DÉSACTIVÉ
+  BLOQUÉ
+}
+enum ÉtatRéseau <<enum>> {
+  Fermé
+  Ouvert
+}
+enum ÉtatMembre <<enum>> {
+  Membre
+  Modérateur
+}
+enum EtatStrategie  <<enum>> {
+ immédiat 
+ quotidien 
+ PasDeNotif
+}
+
+
+enum ÉtatMessage <<enum>> {
+ Refusé
+ Accepté
+ En attente
+}
+
+
+
+
+'Associations, etc.'
+MiniSocs *--> "*" Utilisateur
+Utilisateur "1"-->"*" Membre : devenir
+Réseau "1" --> "1..*" Membre : contenir
+Membre "1" --> "*" Message   : Poster
+MonConsommateur "1"<--"1" Utilisateur   
+Réseau *--> "*" Message
+MiniSocs *--> "*" Réseau
+BufferedSubscription -|> Subscription
+MonConsommateur -|> Subscriber
+SubmissionPublisher -|> Publisher
+
+SubmissionPublisher "1" *-- "*" BufferedSubscription : contains
+MonConsommateur "1" -- "1" BufferedSubscription : est attaché à
+
+
+'Au besoin, aides pour le positionnement'
+
+@enduml

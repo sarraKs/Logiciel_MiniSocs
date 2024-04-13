@@ -1,0 +1,56 @@
+@startuml
+
+'Diagramme de séquence (PlantUML)'
+
+'Configuration charte graphique'
+hide footbox
+skinparam sequenceParticipantBackgroundColor White
+skinparam sequenceActorBackgroundColor White
+
+'Déclaration des acteurs et des participants (déjà existants avant la séquence)'
+actor "__:Utilisateur__" as user
+participant "__u:Utilisateur__" as u
+participant "__m:MiniSocs__" as m
+
+
+'Séquence avec les messages, les créations de participants, etc.'
+
+user -> m ++ : CréerRéseau(nom_Réseau, pseudonyme, pseudo_membre)
+  opt pseudonyme (non null ∧ non vide)∧ pseudo_membre (non null ∧ non vide)∧ nomReseau (non null ∧ non vide)
+     m -> m++ : u=chercher(pseudonyme) :Utilisateur
+     create "__u:Utilisateur__" as u
+     opt u !=null
+       m -> u : ChercherEtatCompte(pseudonyme)
+       u --> m++
+       opt EtatCompte==ACTIF 
+	  m -> m ++ : r=chercherRéseau(nom_Réseau):Réseau
+	  return
+	  create "__r:Réseau__" as r
+	       opt r == null
+	    	   m -> "__r:Réseau__" as r ++ : r=<<create(nom_Réseau, pseudo_membre)>>
+	     	   create "__m1:Membre__" as m1
+		   r -> "__m1:Membre__" as m1 ++ : m1 =<<create(pseudo_membre, etatMembre==modérateur)>>
+		   return
+		   r --> m++
+		   m-> u : AjouterMembre(pseudo_membre)
+		   u--> m++
+		   
+	    	   create "__consommateur1:MonConsommateur__" as consommateur1
+    	       	   m -> "__consommateur1:MonConsommateur__" as consommateur1 ++ : "create()"
+	    	   return
+		   m -> u : RendreConsommateur(consommateur1)
+		   u --> m ++
+	           m -> r : SuouscrireDansProducteurMsgEnAttente(consomateur1)
+		   r --> m ++
+		   m -> r : SouscrireDansProducteurMsgPoste(consommateur1)
+		   r --> m ++  
+		   
+		   
+		   
+	       end 
+	end
+   end
+  end  
+
+
+@enduml

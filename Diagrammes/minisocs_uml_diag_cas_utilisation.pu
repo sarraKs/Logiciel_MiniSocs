@@ -1,0 +1,47 @@
+@startuml
+
+'Diagramme de cas d'utilisation (PlantUML)'
+
+'Configuration charte graphique'
+skinparam usecase {
+BackgroundColor White
+BorderColor Black
+ArrowColor Black
+ActorBackgroundColor<< Human >> Gold
+}
+
+left to right direction
+
+'Déclaration des acteurs :'
+actor Administrateur
+actor Utilisateur
+actor Membre
+actor Modérateur
+Utilisateur <|-- Membre
+Membre	    <|-- Modérateur
+Modérateur  <|-- Administrateur
+
+
+'Déclaration des cas d'utilisation dans le système'
+rectangle "MiniSocs" {
+:Administrateur: -- (ajouter un utilisateur)
+:Administrateur: -- (lister les utilisateur)
+:Administrateur: -- (retirer un utilisateur)
+:Administrateur: -- (bloquer un compte utilisateur)
+:Modérateur: -- (Ajouter un membre au réseau social)
+:Modérateur: -- (Rendre un membre modérateur)
+:Modérateur: -- (Accepter un message)
+:Modérateur: -- (Refuser un message)
+:Modérateur: -- (Lister les réseaux sociaux)
+:Modérateur: -- (Lister les membres)
+:Modérateur: -- (Fermer un réseau social)
+:Modérateur: <-- (NotifierMsgPosté)
+:Utilisateur: -- (créer un réseau social)
+:Utilisateur: -- (afficher un réseau social)
+:Utilisateur: -- (désactiver son compte)
+:Utilisateur: -- (réactiver son compte)
+:Membre: -- (poster un message)
+:Membre: <-- (NotifierMsgAccepté)
+}
+
+@enduml

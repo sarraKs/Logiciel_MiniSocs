@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="eu.telecomsudparis.csc4102.minisocs.validation.TestAjouterUtilisateur" time="0.03" tests="10" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="17"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/home/sarra/CSC4102/projetCSC4102/csc4102-projet/target/test-classes:/home/sarra/CSC4102/projetCSC4102/csc4102-projet/target/classes:/home/sarra/.m2/repository/eu/telecomsudparis/csc/tsp-csc-config-checkstyle/1.1-SNAPSHOT/tsp-csc-config-checkstyle-1.1-SNAPSHOT.jar:/home/sarra/.m2/repository/eu/telecomsudparis/csc4102/csc4102-util/1.1-SNAPSHOT/csc4102-util-1.1-SNAPSHOT.jar:/home/sarra/.m2/repository/org/apache/maven/plugins/maven-compiler-plugin/3.10.1/maven-compiler-plugin-3.10.1.jar:/home/sarra/.m2/repository/org/apache/maven/shared/maven-shared-utils/3.3.4/maven-shared-utils-3.3.4.jar:/home/sarra/.m2/repository/commons-io/commons-io/2.6/commons-io-2.6.jar:/home/sarra/.m2/repository/org/apache/maven/shared/maven-shared-incremental/1.1/maven-shared-incremental-1.1.jar:/home/sarra/.m2/repository/org/codehaus/plexus/plexus-component-annotations/1.5.5/plexus-component-annotations-1.5.5.jar:/home/sarra/.m2/repository/org/codehaus/plexus/plexus-java/1.1.1/plexus-java-1.1.1.jar:/home/sarra/.m2/repository/org/ow2/asm/asm/9.2/asm-9.2.jar:/home/sarra/.m2/repository/com/thoughtworks/qdox/qdox/2.0.1/qdox-2.0.1.jar:/home/sarra/.m2/repository/org/codehaus/plexus/plexus-compiler-api/2.11.1/plexus-compiler-api-2.11.1.jar:/home/sarra/.m2/repository/org/codehaus/plexus/plexus-utils/3.4.1/plexus-utils-3.4.1.jar:/home/sarra/.m2/repository/org/codehaus/plexus/plexus-compiler-manager/2.11.1/plexus-compiler-manager-2.11.1.jar:/home/sarra/.m2/repository/org/codehaus/plexus/plexus-compiler-javac/2.11.1/plexus-compiler-javac-2.11.1.jar:/home/sarra/.m2/repository/commons-validator/commons-validator/1.7/commons-validator-1.7.jar:/home/sarra/.m2/repository/commons-beanutils/commons-beanutils/1.9.4/commons-beanutils-1.9.4.jar:/home/sarra/.m2/repository/commons-digester/commons-digester/2.1/commons-digester-2.1.jar:/home/sarra/.m2/repository/commons-logging/commons-logging/1.2/commons-logging-1.2.jar:/home/sarra/.m2/repository/commons-collections/commons-collections/3.2.2/commons-collections-3.2.2.jar:/home/sarra/.m2/repository/com/fatboyindustrial/gson-javatime-serialisers/gson-javatime-serialisers/1.1.2/gson-javatime-serialisers-1.1.2.jar:/home/sarra/.m2/repository/com/google/code/gson/gson/2.8.9/gson-2.8.9.jar:/home/sarra/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.9.0/junit-jupiter-engine-5.9.0.jar:/home/sarra/.m2/repository/org/junit/platform/junit-platform-engine/1.9.0/junit-platform-engine-1.9.0.jar:/home/sarra/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/home/sarra/.m2/repository/org/junit/platform/junit-platform-commons/1.9.0/junit-platform-commons-1.9.0.jar:/home/sarra/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.9.0/junit-jupiter-api-5.9.0.jar:/home/sarra/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/sarra/.m2/repository/org/awaitility/awaitility/4.2.0/awaitility-4.2.0.jar:/home/sarra/.m2/repository/org/hamcrest/hamcrest/2.1/hamcrest-2.1.jar:"/>
+    <property name="java.vm.vendor" value="Private Build"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="Unknown"/>
+    <property name="os.name" value="Linux"/>
+    <property name="java.vm.specification.version" value="17"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="FR"/>
+    <property name="sun.boot.library.path" value="/usr/lib/jvm/java-17-openjdk-amd64/lib"/>
+    <property name="sun.java.command" value="/home/sarra/CSC4102/projetCSC4102/csc4102-projet/target/surefire/surefirebooter-20240309214033064_3.jar /home/sarra/CSC4102/projetCSC4102/csc4102-projet/target/surefire 2024-03-09T21-40-33_005-jvmRun1 surefire-20240309214033064_1tmp surefire_0-20240309214033064_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="/home/sarra/CSC4102/projetCSC4102/csc4102-projet/target/test-classes:/home/sarra/CSC4102/projetCSC4102/csc4102-projet/target/classes:/home/sarra/.m2/repository/eu/telecomsudparis/csc/tsp-csc-config-checkstyle/1.1-SNAPSHOT/tsp-csc-config-checkstyle-1.1-SNAPSHOT.jar:/home/sarra/.m2/repository/eu/telecomsudparis/csc4102/csc4102-util/1.1-SNAPSHOT/csc4102-util-1.1-SNAPSHOT.jar:/home/sarra/.m2/repository/org/apache/maven/plugins/maven-compiler-plugin/3.10.1/maven-compiler-plugin-3.10.1.jar:/home/sarra/.m2/repository/org/apache/maven/shared/maven-shared-utils/3.3.4/maven-shared-utils-3.3.4.jar:/home/sarra/.m2/repository/commons-io/commons-io/2.6/commons-io-2.6.jar:/home/sarra/.m2/repository/org/apache/maven/shared/maven-shared-incremental/1.1/maven-shared-incremental-1.1.jar:/home/sarra/.m2/repository/org/codehaus/plexus/plexus-component-annotations/1.5.5/plexus-component-annotations-1.5.5.jar:/home/sarra/.m2/repository/org/codehaus/plexus/plexus-java/1.1.1/plexus-java-1.1.1.jar:/home/sarra/.m2/repository/org/ow2/asm/asm/9.2/asm-9.2.jar:/home/sarra/.m2/repository/com/thoughtworks/qdox/qdox/2.0.1/qdox-2.0.1.jar:/home/sarra/.m2/repository/org/codehaus/plexus/plexus-compiler-api/2.11.1/plexus-compiler-api-2.11.1.jar:/home/sarra/.m2/repository/org/codehaus/plexus/plexus-utils/3.4.1/plexus-utils-3.4.1.jar:/home/sarra/.m2/repository/org/codehaus/plexus/plexus-compiler-manager/2.11.1/plexus-compiler-manager-2.11.1.jar:/home/sarra/.m2/repository/org/codehaus/plexus/plexus-compiler-javac/2.11.1/plexus-compiler-javac-2.11.1.jar:/home/sarra/.m2/repository/commons-validator/commons-validator/1.7/commons-validator-1.7.jar:/home/sarra/.m2/repository/commons-beanutils/commons-beanutils/1.9.4/commons-beanutils-1.9.4.jar:/home/sarra/.m2/repository/commons-digester/commons-digester/2.1/commons-digester-2.1.jar:/home/sarra/.m2/repository/commons-logging/commons-logging/1.2/commons-logging-1.2.jar:/home/sarra/.m2/repository/commons-collections/commons-collections/3.2.2/commons-collections-3.2.2.jar:/home/sarra/.m2/repository/com/fatboyindustrial/gson-javatime-serialisers/gson-javatime-serialisers/1.1.2/gson-javatime-serialisers-1.1.2.jar:/home/sarra/.m2/repository/com/google/code/gson/gson/2.8.9/gson-2.8.9.jar:/home/sarra/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.9.0/junit-jupiter-engine-5.9.0.jar:/home/sarra/.m2/repository/org/junit/platform/junit-platform-engine/1.9.0/junit-platform-engine-1.9.0.jar:/home/sarra/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/home/sarra/.m2/repository/org/junit/platform/junit-platform-commons/1.9.0/junit-platform-commons-1.9.0.jar:/home/sarra/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.9.0/junit-jupiter-api-5.9.0.jar:/home/sarra/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/sarra/.m2/repository/org/awaitility/awaitility/4.2.0/awaitility-4.2.0.jar:/home/sarra/.m2/repository/org/hamcrest/hamcrest/2.1/hamcrest-2.1.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/home/sarra"/>
+    <property name="user.language" value="fr"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2023-10-17"/>
+    <property name="java.home" value="/usr/lib/jvm/java-17-openjdk-amd64"/>
+    <property name="file.separator" value="/"/>
+    <property name="basedir" value="/home/sarra/CSC4102/projetCSC4102/csc4102-projet"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="surefire.real.class.path" value="/home/sarra/CSC4102/projetCSC4102/csc4102-projet/target/surefire/surefirebooter-20240309214033064_3.jar"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="17.0.9+9-Ubuntu-122.04"/>
+    <property name="user.name" value="sarra"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="6.5.0-21-generic"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="localRepository" value="/home/sarra/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="Unknown"/>
+    <property name="java.io.tmpdir" value="/tmp"/>
+    <property name="java.version" value="17.0.9"/>
+    <property name="user.dir" value="/home/sarra/CSC4102/projetCSC4102/csc4102-projet"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="native.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/usr/java/packages/lib:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib"/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="java.vendor" value="Private Build"/>
+    <property name="java.vm.version" value="17.0.9+9-Ubuntu-122.04"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="61.0"/>
+  </properties>
+  <testcase name="ajouterUtilisateurTest1Jeu1" classname="eu.telecomsudparis.csc4102.minisocs.validation.TestAjouterUtilisateur" time="0.001"/>
+  <testcase name="ajouterUtilisateurTest1Jeu2" classname="eu.telecomsudparis.csc4102.minisocs.validation.TestAjouterUtilisateur" time="0.001"/>
+  <testcase name="ajouterUtilisateurTest2Jeu1" classname="eu.telecomsudparis.csc4102.minisocs.validation.TestAjouterUtilisateur" time="0.001"/>
+  <testcase name="ajouterUtilisateurTest2Jeu2" classname="eu.telecomsudparis.csc4102.minisocs.validation.TestAjouterUtilisateur" time="0.004"/>
+  <testcase name="ajouterUtilisateurTest3Jeu1" classname="eu.telecomsudparis.csc4102.minisocs.validation.TestAjouterUtilisateur" time="0.001"/>
+  <testcase name="ajouterUtilisateurTest3Jeu2" classname="eu.telecomsudparis.csc4102.minisocs.validation.TestAjouterUtilisateur" time="0.001"/>
+  <testcase name="ajouterUtilisateurTest4Jeu1" classname="eu.telecomsudparis.csc4102.minisocs.validation.TestAjouterUtilisateur" time="0.001"/>
+  <testcase name="ajouterUtilisateurTest4Jeu2" classname="eu.telecomsudparis.csc4102.minisocs.validation.TestAjouterUtilisateur" time="0.001"/>
+  <testcase name="ajouterUtilisateurTest4Jeu3" classname="eu.telecomsudparis.csc4102.minisocs.validation.TestAjouterUtilisateur" time="0.0"/>
+  <testcase name="ajouterUtilisateurTest4Puis4" classname="eu.telecomsudparis.csc4102.minisocs.validation.TestAjouterUtilisateur" time="0.01"/>
+</testsuite>
